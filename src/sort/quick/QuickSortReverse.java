@@ -5,10 +5,10 @@ import java.util.Arrays;
 /**
  * 快速排序
  */
-public class QuickSort {
+public class QuickSortReverse {
     public static void main(String[] args) {
         int[] a = {4,5,6,3,1,8,7,3,2,5};
-        sort(a, 0 ,a.length - 1);
+        sort(a, 0, a.length - 1);
         System.out.println(Arrays.toString(a));
     }
 
@@ -27,11 +27,11 @@ public class QuickSort {
         int i = start;
         int temp;
         for (int j = start; j < end; j++) {
-            // 将小数提前, 游标后移,
-            // 游标永远等于或大于中间值,
+            // 将大数提前, 游标后移,
+            // 游标永远大于或大于中间值,
             // 若游标等于中间值,则只能说明,中间值之前的数全都小于中间值
             // 游标一直移动,最后交换的为本身
-            if (a[j] < pivot) {
+            if (a[j] > pivot) {
                 if (i != j) { //  如果 i == j 移动游标,去除本身交换
                     temp = a[j];
                     a[j] = a[i];

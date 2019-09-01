@@ -1,6 +1,4 @@
-package algorithm.rotate_string;
-
-import org.junit.Test;
+package lint_code.rotate_string;
 
 /**
  * 按偏移量旋转字符串

@@ -1,4 +1,4 @@
-package algorithm.merge_sorted_array;
+package lint_code.merge_sorted_array;
 
 import java.util.Arrays;
 
