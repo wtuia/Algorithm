@@ -1,5 +1,8 @@
 package sort.quick;
 
+import sort.RandomArray;
+
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 /**
@@ -7,14 +10,15 @@ import java.util.Arrays;
  */
 public class QuickSort {
     public static void main(String[] args) {
-        int[] a = {4,5,6,3,1,8,7,3,2,5};
+        System.out.println(System.currentTimeMillis());
+        int[] a = RandomArray.getRandomArray(100_000, 100);
         sort(a, 0 ,a.length - 1);
-        System.out.println(Arrays.toString(a));
+        System.out.println(System.currentTimeMillis());
     }
 
     public static void sort(int [] a, int start, int end) {
         if (start < end){
-            int p = partition(a, start, end);
+            int p = partition(a, start, end); //p点为分区点，比p小的在左边，反之亦然
             sort(a, start, p - 1);
             sort(a, p + 1, end);
         }
