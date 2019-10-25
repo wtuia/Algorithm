@@ -20,10 +20,11 @@ public class SelectK {
         return sort(a, start, end, index);
     }
 
+    // 找到分区点与index重合则退出，无需全部排序
     private static int sort(int [] a, int start, int end, int index) {
         int result = 0;
         if (start <= end){
-            int p = partition(a, start, end);
+            int p = partition(a, start, end); // p点为分区点，比p小的在左边，反之亦然
             if (index < p) {
                 result = sort(a, start, p - 1, index);
             }else if(index > p){
