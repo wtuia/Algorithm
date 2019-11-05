@@ -5,11 +5,15 @@ package lint_code.binary_search;
  * lint code: 14
  */
 public class BinarySearch {
-
+/*
+4 5 6 1 2 3
+5 6 1 2 3 4
+3 4 5 6 1 2
+ */
     public static void main(String[] args) {
         //int[] nums = {0,1,2,4,4,5,6,7,8,9};
-        int[] nums = {4,5,9,9,12,13,14,15,15,18};
-        int taget = 10;
+        int[] nums = {7,8};
+        int taget = 7;
         int index = solution(nums, taget);
         System.out.println(index);
     }

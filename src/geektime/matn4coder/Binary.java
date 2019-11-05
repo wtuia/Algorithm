@@ -1,4 +1,4 @@
-package matn;
+package geektime.matn4coder;
 
 /**
  * 迭代 二分相关操作
@@ -33,7 +33,6 @@ public class Binary {
                 min = middle;
             }
         }
-
         return -1;
     }
 }

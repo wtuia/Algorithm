@@ -20,4 +20,11 @@ public class RandomArray {
         }
         return nums;
     }
+
+    public static void main(String[] args) {
+        String va = "487010695987722";
+        String max_val = "2147483647";
+       // Long aLong = Long.parseLong(va);
+        int integer = Integer.parseInt(max_val);
+    }
 }
