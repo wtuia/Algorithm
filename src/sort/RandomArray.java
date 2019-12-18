@@ -1,5 +1,7 @@
 package sort;
 
+import org.junit.Test;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 // 生成随机数 以排序
@@ -26,5 +28,27 @@ public class RandomArray {
         String max_val = "2147483647";
        // Long aLong = Long.parseLong(va);
         int integer = Integer.parseInt(max_val);
+    }
+
+    public int minSum(int a, int b) {
+        return a + b;
+    }
+
+    public int maxSum(int a, int b) {
+        return a - b;
+    }
+
+    public int checkMin(int a, int b) {
+        if (a > b) {
+            return maxSum(a, b);
+        }else {
+            return minSum(a, b);
+        }
+    }
+
+    @Test
+    public void Demo() {
+        System.out.println(checkMin(10 , 9));
+        System.out.println(checkMin(10, 11));
     }
 }

@@ -2,14 +2,18 @@ package sort.quick;
 
 import sort.RandomArray;
 
+import java.util.Arrays;
+
 /**
  * 快速排序
  */
 public class QuickSort {
     public static void main(String[] args) {
         System.out.println(System.currentTimeMillis());
-        int[] a = RandomArray.getRandomArray(100_000, 100);
+        //int[] a = RandomArray.getRandomArray(100_000, 100);
+        int[] a = {6,8,7,6,3,4};
         sort(a, 0 ,a.length - 1);
+        System.out.println(Arrays.toString(a));
         System.out.println(System.currentTimeMillis());
     }
 

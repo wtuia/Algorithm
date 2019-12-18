@@ -28,17 +28,16 @@ public class JosephusProblem {
         }
     }
 
-    // 约瑟夫问题的测试
     public static void main(String[] args) {
         JosephusProblem problem = new JosephusProblem(6);
-        Node node = problem.selectN(problem.getLinked(),6);
+        Node node = problem.removeNodeAndReturnLastNode(problem.getLinked(),6);
         problem.nodeToString(node);
     }
 
     /**
      *  按N查找, 遇N删除，返回最后一个
     */
-    public Node selectN(Node node, int n) {
+    public Node removeNodeAndReturnLastNode(Node node, int n) {
         Node next; // 判断下一位
         if (n == 1) { // 按序删除， 返回最后一位
             next = node.getNext();
@@ -65,7 +64,6 @@ public class JosephusProblem {
             next = next.getNext();
             i++;
         }
-        //next.setNext(null); // 删除指向本身的闭环
         return next;
     }
 

@@ -12,15 +12,15 @@ public class BinarySearch {
  */
     public static void main(String[] args) {
         //int[] nums = {0,1,2,4,4,5,6,7,8,9};
-        int[] nums = {7,8};
-        int taget = 7;
+        int[] nums = {7,8,9};
+        int taget = 8;
         int index = solution(nums, taget);
         System.out.println(index);
     }
 
     private static int solution(int[] nums, int target) {
         int start = 0, end = nums.length, half = end >> 1;
-        while (start < end){
+        while (start <= end){
            if (nums[half] == target) {
                if (half == 0)
                    return half;
@@ -31,15 +31,11 @@ public class BinarySearch {
                return half;
 
            } else {
-               if (start + 1 == end) {
-                   half = start = end;
-                   continue;
-               }
                if (nums[half] > target) {
-                    end = half;
+                    end = half - 1;
                     half >>= 1;
                } else {
-                    start = half;
+                    start = half + 1;
                     half = (end - start >> 1) + start; // 计算偏移量
                }
            }

@@ -37,10 +37,6 @@
         </Async>
     </appenders>
     <loggers>
-        <!-- <AsyncLogger name="com.zone.ics.business.ipam" level="info"
-             additivity="false" includeLocation="true">
-            <AppenderRef ref="FILE" />
-        </AsyncLogger> -->
         <Root level="info">
             <AppenderRef ref="ASYNC" />
         </Root>

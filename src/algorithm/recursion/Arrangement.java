@@ -15,9 +15,9 @@ public class Arrangement {
         int[] nums = {1,2,3,4,5};
         int countMax = nums.length - 1;
         List<List<Integer>> results = new ArrayList<>();
-        for (int i = 0, len = nums.length; i < len; i++) {
+        for (int num : nums) {
             List<Integer> result = new ArrayList<>();
-            result.add(nums[i]);
+            result.add(num);
             allPermutation(nums, result, countMax, results);
         }
         for (List<Integer> list : results) {
@@ -30,17 +30,27 @@ public class Arrangement {
     @Test
     public void allPermutationTest() {
         int[] nums = {1,2,3,4,5};
-        int countMax = nums.length;
+        int tryMax = 2;//nums.length;
         List<List<Integer>> results = new ArrayList<>();
-        List<Integer> result = new ArrayList<>();
-        allPermutation(nums, result, countMax, results);
+        allPermutation(nums, tryMax, results);
         for (List<Integer> list : results) {
             System.out.println(list);
         }
         System.out.println(results.size());
     }
 
-    // 全排列 n 个元素，取n个排序
+    // 封装内部实现
+    private static void allPermutation(int[] nums, int max, List<List<Integer>> results) {
+        allPermutation(nums, new ArrayList<>(), max, results);
+    }
+
+    /**
+     *全排列 n 个元素，取n个排序
+     * @param nums 排列数组
+     * @param num 已排列的数组，第一次传入的为一个空数组
+     * @param max 最大排列长度
+     * @param results 结果
+     */
     private static void allPermutation(int[] nums, List<Integer> num, int max, List<List<Integer>> results) {
         for (int i =0, len = nums.length; i < len ; i++) {
             List<Integer> cycleResult = new ArrayList<>(num);
@@ -49,9 +59,16 @@ public class Arrangement {
             }
             cycleResult.add(nums[i]);
             int tryMax = max - 1;
-            if (tryMax <= 0) {
+            if (tryMax <= 0) { // 当 队列长度 = 排列长度 - 1 时，进入条件
                 results.add(cycleResult);
-                return;
+                // 该判断的作用在于，若未全排序，则直接跳出，避免多余的循环
+                // 对于非全排序，可以继续查找未在已排序队列的组合，因为是后向查找，则不可能重复。
+                // 但无法跳过无用循环，仍需使用 if (num.contains(nums[i])) 排除已存在的数
+                if (i +1 == len) {
+                    return;
+                }else{
+                    continue; // 查找可能序列，但不进入下一次递归
+                }
             }
             allPermutation(nums, cycleResult, tryMax, results);
         }
@@ -63,7 +80,7 @@ public class Arrangement {
     public void repeatAllPermutationTest() {
         int[] nums = {1,2,2,3,4,5};
         int countMax = nums.length - 1;
-        Set<List<Integer>> results = new HashSet<>();
+        List<List<Integer>> results = new ArrayList<>();
         for (int i = 0, len = nums.length; i < len; i++) {
             List<Integer> result = new ArrayList<>();
             result.add(i);
@@ -79,7 +96,7 @@ public class Arrangement {
      *  数组中含有重复元素, 会含有重复数据，使用Set去除，不重复排列
      */
     private static void repeatAllPermutation(int[] nums, List<Integer> indexList,
-                                             int max, Set<List<Integer>> results) {
+                                             int max, List<List<Integer>> results) {
         for (int i =0, len = nums.length; i < len ; i++) {
             List<Integer> cycleResult = new ArrayList<>(indexList);
             if (indexList.contains(i)) {
@@ -88,11 +105,14 @@ public class Arrangement {
             cycleResult.add(i);
             int tryMax = max - 1;
             if (tryMax <= 0) {
+                //因为含有重复数据， 使用下标区分
                 List<Integer> result = new ArrayList<>();
                 for (Integer index : indexList) {
                     result.add(nums[index]);
                 }
-                results.add(result);
+                if (!results.contains(result)){ //判断去除重复数据， 使用set可达此效果，但set无序
+                    results.add(result);
+                }
                 return;
             }
             repeatAllPermutation(nums, cycleResult, tryMax, results);

@@ -5,6 +5,12 @@ import java.util.Arrays;
 /**
  * 归并排序
  * 先分解 后合并
+ *
+ * 当前函数运行完之后，会将参数传入下一个本身函数，当前函数的栈被释放。
+ * 另见{@link algorithm.fibonacci.Fibonacci}.
+ * 对于递归是否会爆栈的判断，在于函数运行完之后，是否需要等待下一个运行获取值，如是，则需要保留栈信息
+ *
+ *
  */
 public class MergeSortTest {
 
