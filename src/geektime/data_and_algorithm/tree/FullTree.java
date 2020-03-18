@@ -1,5 +1,6 @@
 package geektime.data_and_algorithm.tree;
 
+import org.junit.Test;
 import sort.RandomArray;
 
 import java.util.Arrays;
@@ -24,6 +25,13 @@ public class FullTree {
         System.out.println(trees[index]);
         preOrder(trees, 2 * index);
         preOrder(trees, 2 * index + 1);
+    }
+
+    @Test
+    public void test1() {
+        String str = "abc";
+        int re = str.indexOf(null, -1);
+        System.out.println(re);
     }
 
 
