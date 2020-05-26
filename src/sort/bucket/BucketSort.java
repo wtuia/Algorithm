@@ -12,7 +12,9 @@ public class BucketSort {
         // 生成随机测试数
         System.out.println(System.currentTimeMillis());
         int[] a = RandomArray.getRandomArray(100_000, 1000);
+        System.out.println(Arrays.toString(a));
         bucket(a);
+        System.out.println(Arrays.toString(a));
         System.out.println(System.currentTimeMillis());
 
     }
@@ -47,7 +49,7 @@ public class BucketSort {
     private static void sort(List<Integer> a, int start, int end) {
         if (start < end) {
             int p = partition(a, start, end);
-            // p点元素以确认，排序前后区间
+            // p点元素确认，排序前后区间
             sort(a, start, p - 1);
             sort(a, p + 1, end);
         }
